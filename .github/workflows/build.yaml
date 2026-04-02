@@ -92,6 +92,6 @@ jobs:
         run: |
           mv build/version.hpp include/uRayTracer1D/
           mv build/CMakeUserPresets.json ./ 
-          ctest --preset conan-release
+          ctest --preset conan-release --verbose
 
 
