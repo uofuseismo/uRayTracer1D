@@ -1,0 +1,22 @@
+#.rst:
+# FinduLayerTracer1D
+# ------------------
+# 
+# Finds the uLayerTracer1D library and include directory.
+#
+# Imported targets
+# ^^^^^^^^^^^^^^^^
+#
+# ``uLayerTracer1D_FOUND``
+#   True indicates uLayerTracer1D was found.
+# ``uLayerTracer1D_VERSION_STRING``
+#   The version found.
+# ``uLayerTracer1D::uLayerTracer1D``
+#   The 1D layer ray tracer library, if found. 
+include(CMakeFindDependencyMacro)
+
+find_dependency(TBB)
+
+if (NOT TARGET uLayerTracer1D::@PROJECT_NAME@)
+   include("${CMAKE_CURRENT_LIST_DIR}/@PROJECT_NAME@Targets.cmake")
+endif()
