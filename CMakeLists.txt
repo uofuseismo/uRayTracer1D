@@ -34,7 +34,8 @@ set(LIBRARY_SRC
     src/version.cpp
     src/receiver.cpp
     src/source.cpp
-    src/acoustic/constantLayer.cpp)
+    src/acoustic/constantLayer.cpp
+    src/acoustic/segment.cpp)
 
 if (${BUILD_SHARED_LIBS})
    message("Will build shared library")
@@ -50,7 +51,10 @@ target_sources(libuRayTracer1D
                BASE_DIRS
                   include
                FILES
+                  include/uRayTracer1D/receiver.hpp
                   include/uRayTracer1D/source.hpp
+                  include/uRayTracer1D/acoustic/constantLayer.hpp
+                  include/uRayTracer1D/acoustic/segment.hpp
                   include/uRayTracer1D/version.hpp
                )
 target_link_libraries(libuRayTracer1D
