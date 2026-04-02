@@ -3,7 +3,7 @@
 #include <catch2/matchers/catch_matchers_floating_point.hpp>
 #include "uRayTracer1D/source.hpp"
 
-TEST_CASE("uRayTracer1D", "[Source]")
+TEST_CASE("URayTracer1D", "[Source]")
 {
     constexpr double depth{4823};
     URayTracer1D::Source source;

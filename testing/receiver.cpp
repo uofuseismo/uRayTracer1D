@@ -3,7 +3,7 @@
 #include <catch2/matchers/catch_matchers_floating_point.hpp>
 #include "uRayTracer1D/receiver.hpp"
 
-TEST_CASE("uRayTracer1D", "[Receiver]")
+TEST_CASE("URayTracer1D", "[Receiver]")
 {
     constexpr double elevation{1223};
     constexpr double offset{130052};

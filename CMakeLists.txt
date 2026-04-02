@@ -33,7 +33,8 @@ configure_file(${CMAKE_CURRENT_SOURCE_DIR}/src/version.hpp.in
 set(LIBRARY_SRC
     src/version.cpp
     src/receiver.cpp
-    src/source.cpp)
+    src/source.cpp
+    src/acoustic/constantLayer.cpp)
 
 if (${BUILD_SHARED_LIBS})
    message("Will build shared library")
@@ -72,7 +73,8 @@ set_target_properties(libuRayTracer1D PROPERTIES
 if (PROJECT_IS_TOP_LEVEL AND ${BUILD_TESTS})
    add_executable(unitTests
                   testing/receiver.cpp
-                  testing/source.cpp)
+                  testing/source.cpp
+                  testing/acoustic/model.cpp)
    set_target_properties(unitTests PROPERTIES
                          CXX_STANDARD 20
                          CXX_STANDARD_REQUIRED YES
