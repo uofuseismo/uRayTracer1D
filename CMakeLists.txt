@@ -35,6 +35,7 @@ set(LIBRARY_SRC
     src/receiver.cpp
     src/source.cpp
     src/acoustic/constantLayer.cpp
+    src/acoustic/path.cpp
     src/acoustic/segment.cpp)
 
 if (${BUILD_SHARED_LIBS})
@@ -54,6 +55,7 @@ target_sources(libuRayTracer1D
                   include/uRayTracer1D/receiver.hpp
                   include/uRayTracer1D/source.hpp
                   include/uRayTracer1D/acoustic/constantLayer.hpp
+                  include/uRayTracer1D/acoustic/path.hpp
                   include/uRayTracer1D/acoustic/segment.hpp
                   include/uRayTracer1D/version.hpp
                )

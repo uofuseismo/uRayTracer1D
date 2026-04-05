@@ -4,6 +4,7 @@
 #include <catch2/catch_test_macros.hpp>
 #include <catch2/matchers/catch_matchers_floating_point.hpp>
 #include "uRayTracer1D/acoustic/segment.hpp"
+#include "uRayTracer1D/acoustic/path.hpp"
 #include "uRayTracer1D/acoustic/constantLayer.hpp"
 
 // NOLINTBEGIN
@@ -72,6 +73,14 @@ TEST_CASE("UrayTracer1D::Segment", "[Segment]")
                      Catch::Matchers::WithinAbs(travelTime, 1.e-14));
     }
 }
+
+/*
+TEST_CASE("URayTracer1D::Acoustic", "[Path]")
+{
+
+}
+*/
+
 // NOLINTEND
 
 TEST_CASE("URayTracer1D::Acoustic", "[Layer]")
