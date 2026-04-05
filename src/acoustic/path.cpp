@@ -1,6 +1,7 @@
 #include <cstddef>
 #include <cmath>
 #include <limits>
+#include <string>
 #include <memory>
 #include <utility>
 #include <vector>
@@ -195,6 +196,44 @@ void Path::close()
     pImpl->integrate();
 }
 
+/// Set ray path from a vector
+void Path::set(const std::vector<Segment> &segments)
+{
+    auto temporarySegments = segments;
+    set(std::move(temporarySegments));
+}
+
+void Path::set(std::vector<Segment> &&segments)
+{
+    for (int i = 0; i < static_cast<int> (segments.size()); ++i)
+    {
+        ::checkSegment(segments[i]); // Throws
+        if (i > 0)
+        {
+            const auto point0 = segments[i - 1].getEndPoint();
+            const auto point1 = segments[i].getStartPoint();
+            auto distance = ::computeLength(point0, point1);
+            constexpr double
+                tolerance{100*std::numeric_limits<double>::epsilon()};
+            if (distance > tolerance)
+            {
+                throw std::invalid_argument("Segment " + std::to_string(i)
+                                          + " does no start at last segments "
+                                          + std::to_string(i - 1)
+                                          + " end point");
+            }
+        }
+    }
+    pImpl->mSegments = std::move(segments);
+    std::vector<Segment> nullSegment{};
+    pImpl->mSegmentsConstruction = std::move(nullSegment);
+    pImpl->mOpened = false;             
+    pImpl->mIntegrated = false;
+    // Sum along the path
+    pImpl->integrate();
+}
+
+
 /// Number of segments
 int Path::size() const noexcept
 {
@@ -218,6 +257,13 @@ double Path::length() const
 {
     pImpl->integrate();
     return pImpl->mLength;
+}
+
+/// Reverse a ray path
+void Path::reverse()
+{
+    if (isOpen()){throw std::runtime_error("Construction is open");}
+    pImpl->reverse();
 }
 
 /// Iterators

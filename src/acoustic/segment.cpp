@@ -215,7 +215,7 @@ bool Segment::hasSlowness() const noexcept
 /// Layer index
 void Segment::setLayerIndex(const int layerIndex)
 {
-    if (layerIndex <= 0)
+    if (layerIndex < 0)
     {
         throw std::invalid_argument("Layer index " + std::to_string(layerIndex)
                                   + " must be non-negative");
